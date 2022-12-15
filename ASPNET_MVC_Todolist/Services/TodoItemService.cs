@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using AspNetCoreTodo.Data;
 using AspNetCoreTodo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace AspNetCoreTodo.Services
 {
@@ -20,10 +22,25 @@ namespace AspNetCoreTodo.Services
 
         public async Task<TodoItem[]> GetIncompleteItemsAsync()
         {
-            var items = await _context.Items
-                .Where(x => x.IsDone == false)
-                .ToArrayAsync();
-            return items;
+            /*
+             {
+              "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "isDone": true,
+              "title": "string",
+              "dueAt": "2022-12-15T14:41:07.147Z",
+              "startFrom": "2022-12-15T14:41:07.147Z",
+              "numberOfDays": 0
+            }
+             */
+
+
+            //var items = await _context.Items
+            //    .Where(x => x.IsDone == false)
+            //    .ToArrayAsync();
+            //return items;
+            TodoItem[] a = new TodoItem[0];
+            
+            return a;
         }
 
         public async Task<bool> AddItemAsync(TodoItem newItem)
@@ -32,10 +49,35 @@ namespace AspNetCoreTodo.Services
             newItem.IsDone = false;
             newItem.NumberOfDays = newItem.NumberOfDays;
 
-            _context.Items.Add(newItem);
+            //string json = "{\"id\":\"" + newItem.Id.ToString() + "\",\"isDone\":false,\"title\":\"" + newItem.Title + "\",\"numberOfDays\":"+ newItem.NumberOfDays.ToString()+ "}";
+            //TodoItem test = JsonConvert.DeserializeObject<TodoItem>(json);
 
-            var saveResult = await _context.SaveChangesAsync();
-            return saveResult == 1;
+            string jsonString =  JsonConvert.SerializeObject(newItem);
+            // Create a request to the specified URL
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://localhost:7194/api/TodoItems");
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            // Write the JSON data to the request stream
+            using (StreamWriter writer = new StreamWriter(request.GetRequestStream()))
+            {
+                writer.Write(jsonString);
+            }
+
+            // Send the request and get the response
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            if (response.StatusCode == HttpStatusCode.OK)
+                return true;
+            else
+                return false;
+
+            // Read the response as a string
+            //using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+            //{
+            //    responseString = reader.ReadToEnd();
+            //}
+
+            //var saveResult = await _context.SaveChangesAsync();
+            //return saveResult == 1;
         }
 
         //[Bind("Title,DueAt,StartFrom,NumberOfDays")] TodoItem updatedItem

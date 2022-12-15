@@ -20,7 +20,7 @@ namespace AspNetCoreTodo.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // Get to-do items from database
+            // Get to-do items from backend api
             var items = await _todoItemService.GetIncompleteItemsAsync();
 
             // Put items into a model
