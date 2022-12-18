@@ -25,7 +25,10 @@ namespace TodoListWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetItems()
         {
-            return await _context.Items.ToListAsync();
+            var items = await _context.Items
+                .Where(x => x.IsDone == false)
+                .ToArrayAsync();
+            return items;
         }
 
         // GET: api/TodoItems/5

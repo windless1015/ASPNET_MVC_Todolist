@@ -79,8 +79,7 @@ namespace TodoItemMVC.Services
 
                 var todoItemJson = new StringContent(JsonSerializer.Serialize(todoItem), Encoding.UTF8, Application.Json);
 
-                using var httpResponseMessage =
-                    await _httpClient.PutAsync(baseUrl + $"/api/TodoItems/{todoItem.Id}", todoItemJson);
+                using var httpResponseMessage = await _httpClient.PutAsync(baseUrl + $"/api/TodoItems/{todoItem.Id}", todoItemJson);
                 httpResponseMessage.EnsureSuccessStatusCode();
                 return true;
             }
