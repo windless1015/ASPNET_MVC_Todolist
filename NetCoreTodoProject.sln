@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreTodo", "ASPNET_MVC_Todolist\AspNetCoreTodo.csproj", "{A0D1841A-7B51-4071-9C2B-5408CFC05ACB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoListWebAPI", "TodoListWebAPI\TodoListWebAPI.csproj", "{8CFA4345-3AB6-4B14-8557-5C0DFA1A00F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoItemMVC", "TodoItemMVC\TodoItemMVC.csproj", "{EBFCA109-6139-4B87-9A83-1296A2FA0919}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A0D1841A-7B51-4071-9C2B-5408CFC05ACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0D1841A-7B51-4071-9C2B-5408CFC05ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0D1841A-7B51-4071-9C2B-5408CFC05ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0D1841A-7B51-4071-9C2B-5408CFC05ACB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CFA4345-3AB6-4B14-8557-5C0DFA1A00F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8CFA4345-3AB6-4B14-8557-5C0DFA1A00F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CFA4345-3AB6-4B14-8557-5C0DFA1A00F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CFA4345-3AB6-4B14-8557-5C0DFA1A00F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBFCA109-6139-4B87-9A83-1296A2FA0919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBFCA109-6139-4B87-9A83-1296A2FA0919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBFCA109-6139-4B87-9A83-1296A2FA0919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBFCA109-6139-4B87-9A83-1296A2FA0919}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
