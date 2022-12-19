@@ -1,0 +1,17 @@
+version: '3.8'
+networks:
+ containers-network:
+  driver: bridge
+services:
+    backend:
+        build: ./TodoListWebAPI
+        ports:
+            - "8000:81"
+        networks:
+            - containers-network 
+    frontend:
+        build: ./TodoItemMVC
+        ports:
+            - "8080:80"
+        networks:
+            - containers-network 

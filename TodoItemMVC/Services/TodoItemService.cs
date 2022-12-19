@@ -10,7 +10,7 @@ namespace TodoItemMVC.Services
     public class TodoItemService : ITodoItemService
     {
         private readonly HttpClient _httpClient;
-        private string baseUrl = "https://localhost:7194";
+        private string baseUrl = "http://backend:81";
         public TodoItemService(IHttpClientFactory httpClientFactory)
         {
             _httpClient = httpClientFactory.CreateClient();
